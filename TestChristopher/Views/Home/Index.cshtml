@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IGrouping<IPost, Comment>>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (IGrouping<IPost, Comment> group in Model)
+{
+    <h2>@group.Key.Content</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Comment comment in group)
+            {
+                <tr>
+                    <th>@comment.Id</th>
+                    <th>@comment.Content</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
